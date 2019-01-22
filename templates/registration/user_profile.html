@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+<style>
+	.customButton {
+		    font-size: 16px !important;
+    line-height: 25px !important;
+    padding: 10px 15px !important;
+    width: 150px !important;
+    text-align: center !important;
+    background-color: #061da4 !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-family: "Qanto" !important;
+	}
+</style>
+{% endblock %}
+{% block content %}
+	<div class="login-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
+				<div class="container">
+					<div class="col-md-5 col-md-offset-3" >
+
+						<!-- Login -->
+						<div class="col-md-12 col-12 d-flex">
+							<div class="content-section">
+								  <div class="media">
+										<img class="rounded-circle account-img" src="{{ viewuser.userprofile.profile.url }}">
+										<div class="media-body">
+									  		<h2 class="account-heading">{{ viewuser.username }}</h2>
+									  		<p class="text-secondary">{{ viewuser.email }}</p>
+									  		<p class="text-secondary">
+										   		<h5>Following</h5>
+													{% for follower in viewuser.userprofile.following.all %}
+														<a href="{% url 'user_profile' follower.username %}">{{ follower.username  }}</a>
+													{% endfor %}
+									  		</p>
+											<p class="text-secondary">
+											  <h5>Followed By</h5>
+											   {% for follower in viewuser.userprofile.followedby.all %}
+													<a href="{% url 'user_profile' follower.username %}">{{ follower.username }}</a>
+												{% endfor %}
+										  	</p>
+											<p class="text-secondary">
+												<ul>
+													<li><a href="{% url 'my_cards' viewuser.username %}"><h5>Cards</h5></a></li>
+													<li><a href=""><h5>Decks</h5></a></li>
+													<li><a href="">{{ follower.username }}<h5>Credits</h5></a></li>
+												</ul>
+											</p>
+										{% if user.username == viewuser.username %}
+										<p>
+
+											<a class="df-btn" href="{% url 'edit_user' %}" tabindex="0">EDIT</a>
+										</p>
+										{% endif %}
+									</div>
+
+								  </div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+		<br />
+	</div>
+
+
+
+{% endblock %}
+
+

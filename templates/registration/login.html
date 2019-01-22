@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+
+{% endblock %}
+{% block content %}
+<!-- Main component for a primary marketing message or call to action -->
+	<div class="">
+		<!--Login Section Start-->
+		<div class="login-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
+			<div class="container">
+				<div class="col-md-5 col-md-offset-3" >
+
+					<!-- Login -->
+					<div class="col-md-12 col-12 d-flex">
+						<div class="gilbard-login">
+
+							<h3>Login to your account</h3>
+
+							<!-- Login Form -->
+							<form class="form-signin" method="POST">
+								{% csrf_token %}
+								<div class="row">
+									<div class="col-12 mb-30">
+										<input type="text" id="inputName" placeholder="Type your Username" name="username" required autofocus>
+									</div>
+									<div class="col-12 mb-20">
+										<input type="password" id="inputPassword" placeholder="Enter your Password" name="password" required>
+									</div>
+
+									<div class="col-12 mb-15">
+
+										<input type="checkbox" id="remember_me">
+										<label for="remember_me">Remember me</label>
+
+										<a href="{% url 'password_reset' %}">Forgotten password?</a>
+
+									</div>
+									<div class="col-12"><input type="submit" value="LOGIN"></div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<h4>Don’t have account?  <a href="{% url 'register' %}" >Register</a></h4>
+
+				</div>
+			</div>
+		</div>
+		 <!--Login Section End-->
+	</div>
+{% endblock %}

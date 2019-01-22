@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}{% endblock %}
+
+{% block content %}
+
+<!-- Main component for a primary marketing message or call to action -->
+<div class="forum-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
+        <div class="container">
+            <div class="row">
+                {% for object in objects %}
+                    <div class="col-12">
+                        <!--Single Forum Start-->
+                        <div class="single-forum mb-30">
+                            <h3><a href="">{{ object.title }}</a></h3>
+                            <div class="forum-meta">
+                                <ul>
+                                    <li><a href="{{ object.user.username }}"><img src= "" alt="">{{ object.user }}</a></li>
+                                    <li>posted {{ object.timestamp }} </li>
+                                </ul>
+                                <span class="view">12 reply</span>
+                            </div>
+                            <span class="sticker">new</span>
+                        </div>
+                        <!--Single Forum End-->
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
+
+
+{% endblock %}
+

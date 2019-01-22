@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+
+{% endblock %}
+{% block content %}
+
+
+<div class="login-section section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45">
+			<div class="container">
+				<div class="col-md-5 col-md-offset-3" >
+
+					<!-- Login -->
+					<div class="col-md-12 col-12 d-flex">
+						<div class="gilbard-login">
+							<h2 class="text-center">Edit User Profile</h2>
+							<form method="POST" class="form-signin" action="{% url 'edit_user' %}"  enctype="multipart/form-data">
+								{% csrf_token %}
+
+								{% if form.errors %}
+									<div class="alert alert-warning alert-dismissable" role="alert">
+									<button class="close" data-dismiss="alert">
+											<small><sup>x</sup></small>
+										</button>
+									<p>Your Form Has Errors...</p>
+									{% for field in form %}
+										{% if field.errors  %}
+											{{ field.errors }}
+										{% endif %}
+
+									{% endfor %}
+
+								  </div>
+
+
+								{% endif %}
+									{{ form.as_p }}
+									{{ profile_form.as_p }}
+
+								<div class="col-12"><input type="submit" value="SAVE"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+</div>
+    <br/>
+    <p class="form-signin"><small><a href="{% url 'change_password' %}">Click Here</a> To Change Your Password</small></p>
+
+<br/><br/>
+{% endblock %}
+
+

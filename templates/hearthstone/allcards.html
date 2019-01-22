@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+{% endblock %}
+{% block content %}
+<!-- Main component for a primary marketing message or call to action -->
+
+	<div class="text-center">
+    {% for card in cards %}
+     	<a href="#"><img  src="{{ card.card_image.url }}" height=286 width=200 alt="My image"></a>
+
+    {% endfor %}
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="blog-pagination text-center">
+			   {% if cards.has_other_pages %}
+				  <ul class="page-pagination">
+					{% if cards.has_previous %}
+					  <li><a href="?page={{ cards.previous_page_number }}"><i class="icofont-long-arrow-left"></i></a></li>
+					{% else %}
+					  <li class="disabled"><span><i class="icofont-long-arrow-left"></i></span></li>
+					{% endif %}
+					{% for i in cards.paginator.page_range %}
+					  {% if cards.number == i %}
+						<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+					  {% else %}
+						<li><a href="?page={{ i }}">{{ i }}</a></li>
+					  {% endif %}
+					{% endfor %}
+					{% if cards.has_next %}
+					  <li><a href="?page={{ cards.next_page_number }}"><i class="icofont-long-arrow-right"></i></a></li>
+					{% else %}
+					  <li class="disabled"><span><i class="icofont-long-arrow-right"></i></span></li>
+					{% endif %}
+				  </ul>
+				{% endif %}
+			</div>
+		</div>
+  	</div>
+{% endblock %}

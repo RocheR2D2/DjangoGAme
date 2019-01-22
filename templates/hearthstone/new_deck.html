@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}
+{% endblock %}
+{% block content %}
+<!-- Main component for a primary marketing message or call to action -->
+<h1>This is your first deck </h1>
+    <div class="text-center">
+        {% for card in deck %}
+        <div class="item">
+            <a href="#">
+                <img src="{{ card.card_image.url }}" height=286 width=200 alt="My image">
+
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% for profile in profiles %}
+<h2> {{ profile.user.username }}</h2>
+    <ul>
+    {% for deck in profile.decks.all %}
+        <li>
+            <ul>
+                {{ deck.title }}
+
+            {% for c in deck.card.all %}
+           <li>{{ c }}</li>
+
+
+
+            {% endfor %}
+            </ul>
+        <li>
+    {% endfor %}
+     </ul>
+{% endfor %}

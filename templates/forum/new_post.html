@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block stylesheet %}{% endblock %}
+
+{% block content %}
+
+    <!--Forum Create Area Start-->
+    <div class="Forum-create-area section pt-95 pt-lg-75 pt-md-65 pt-sm-55 pt-xs-45 pb-xs-45">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="">
+                         <form method="POST" action="{% url 'new_post' %}" class="">
+                             {% csrf_token %}
+                             {% if form.errors %}
+                                <div class="alert alert-warning alert-dismissable" role="alert">
+                                    <button class="close" data-dismiss="alert">
+                                        <small><sup>x</sup></small>
+                                    </button>
+                                    <p>Error in Forms</p>
+                                    {% for field in form %}
+                                        {% if field.errors  %}
+                                            {{ field.errors }}
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                             {% endif %}
+
+
+                            <div class="row">
+                                {% for field in form %}
+                                <div class="col-12">
+                                    <!--Single Forum Start-->
+                                    <div class="single-input mb-50 mb-sm-30 mb-xs-20">
+                                       <label>{{ field.label_tag }}</label>
+                                            {{ field }}
+                                    </div>
+                                    <!--Single Forum End-->
+                                </div>
+                                {% endfor %}
+
+                                <div class="col-12">
+                                    <div class="forum-post">
+                                        <button class="df-btn" type="submit">Create</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Forum Create Area End-->
+
+
+{% endblock %}
+
