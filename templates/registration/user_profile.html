@@ -43,7 +43,7 @@
 											<p class="text-secondary">
 												<ul>
 													<li><a href="{% url 'my_cards' viewuser.username %}"><h5>Cards</h5></a></li>
-													<li><a href=""><h5>Decks</h5></a></li>
+													<li><a href="{% url 'my_decks' viewuser.username %}"><h5>Decks</h5></a></li>
 													<li><a href="">{{ follower.username }}<h5>Credits</h5></a></li>
 												</ul>
 											</p>

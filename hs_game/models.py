@@ -59,7 +59,7 @@ class Card(models.Model):
 class Deck(models.Model):
 	card = models.ManyToManyField(Card, related_name="decks", blank=True)
 	user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name="decks")
-	title = models.CharField(max_length=100)
+	title = models.CharField(max_length=100, unique = True)
 
 	def __str__(self):
 		return self.title

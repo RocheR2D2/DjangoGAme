@@ -4,5 +4,34 @@
 
 {% endblock %}
 {% block content %}
+<div class="forum-area section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50">
+        <div class="container">
+            <div class="row">
+                {% for deck in decks %}
+                    <div class="col-12">
+                        <!--Single Forum Start-->
+                        <div class="single-forum mb-30">
+                            <h3><a href="">Deck: {{ deck.title }}</a></h3>
+                            <div class="forum-meta">
+                                <ul>
+                                    <li><a href=""><img src="{{ deck.user.profile.url }}" width="50" height="50" alt="">{{ deck.user }}</a></li>
+                                    <ul>
+                                     {% for card in deck.card.all %}
+                                        <li><img src="{{ card.card_image.url }}" width="120" height="180" alt=""></li>
+                                    {% endfor %}
+                                    </ul>
+                                </ul>
+                               
+                                <span class="view"><a>Delete</a></span>
+                                
+                            </div>
+                            <span class="sticker">new</span>
+                        </div>
+                        <!--Single Forum End-->
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+</div>
 
 {% endblock %}
